@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition>
+	<h:head></h:head>
+	<h:body>
+		<h:form>
+
+			<b:well>
+				<ui:repeat var="zwit" value="#{flowView.zwits}" id="zwits">
+					<h:outputText value="#{zwit.message}" />
+					<h:outputText value="#{zwit.owner.username}" />
+					<h:outputText value=" #{zwit.createDate}" />
+					<br />
+				</ui:repeat>
+
+				<b:commandButton action="#{flowView.daha()}" value="more"
+					look="success" update="zwits" />
+			</b:well>
+
+		</h:form>
+	</h:body>
+</ui:composition>
+</html>
