@@ -10,21 +10,22 @@
 <h:head></h:head>
 
 <h:body>
-	<h:form>
+		<h:form>
 
-		<b:inputText placeholder="username" value="#{registerView.username}"
-			required="true" />
-		<br />
-		<b:inputSecret placeholder="password" value="#{registerView.password}"
-			required="true" />
-		<br />
-		<b:inputSecret placeholder="password correction"
-			value="#{registerView.passwordCorrection}" required="true" />
-		<br />
-		<b:commandButton look="success" ajax="true" value="Register"
-			action="#{registerView.register()}" update="" />
+			<b:growl id="growl" show-detail="true" />
 
-	</h:form>
-</h:body>
+			<b:inputText placeholder="username" value="#{registerView.username}"
+				required="true" />
+			<b:inputSecret placeholder="password"
+				value="#{registerView.password}" required="true" />
+			<b:inputSecret placeholder="password correction"
+				value="#{registerView.passwordCorrection}" required="true" />
+			<b:commandButton look="success" ajax="true" value="Register"
+				action="#{registerView.register()}" update="@form" />
+			
+		or <h:commandLink value="Login!" action="#{navigation.addRedirect(navigation.login()).asString()}" immediate="true" />
+
+		</h:form>
+	</h:body>
 </ui:composition>
 </html>

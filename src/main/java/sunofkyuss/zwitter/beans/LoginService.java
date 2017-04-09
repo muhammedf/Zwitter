@@ -8,22 +8,24 @@ import sunofkyuss.zwitter.dao.PersonDao;
 import sunofkyuss.zwitter.model.Person;
 
 @RequestScoped
-public class RegisterService {
+public class LoginService {
 
 	@Inject
 	private PersonDao pd;
 
-	public boolean register(String username, String password) {
+	public Person login(String username, String password) {
 
-		if (pd.getPersonByUserName(username) != null) {
-			return false;
+		Person person = pd.getPersonByUserName(username);
+		
+		if(person==null){
+			return null;
+		}
+		
+		if (Crypto.md5Equals(password, person.getPassword())) {
+			return person;
 		}
 
-		password = Crypto.md5(password);
-
-		Person person = new Person(username, password);
-		pd.create(person);
-		return true;
-
+		return null;
 	}
+
 }

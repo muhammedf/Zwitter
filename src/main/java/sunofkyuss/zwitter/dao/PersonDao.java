@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import sunofkyuss.zwitter.model.Person;
-import sunofkyuss.zwitter.model.Zwit;
 
 /**
  * DAO for Person
@@ -41,10 +40,9 @@ public class PersonDao {
 	}
 
 	public List<Person> listAll(Integer startPosition, Integer maxResult) {
-		TypedQuery<Person> findAllQuery = em
-				.createQuery(
-						"SELECT DISTINCT p FROM Person p LEFT JOIN FETCH p.zwits LEFT JOIN FETCH p.friends ORDER BY p.id",
-						Person.class);
+		TypedQuery<Person> findAllQuery = em.createQuery(
+				"SELECT DISTINCT p FROM Person p LEFT JOIN FETCH p.zwits LEFT JOIN FETCH p.friends ORDER BY p.id",
+				Person.class);
 		if (startPosition != null) {
 			findAllQuery.setFirstResult(startPosition);
 		}
@@ -53,16 +51,21 @@ public class PersonDao {
 		}
 		return findAllQuery.getResultList();
 	}
-	
-	public Person getPersonByUserName(String username){
-		
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Person> cq = cb.createQuery(Person.class);
-		Root<Person> e = cq.from(Person.class);
-		
-		cq.where(cb.equal(e.get("username"), username));
-		
-		TypedQuery<Person> qu = em.createQuery(cq);
-		return qu.getSingleResult();
+
+	public Person getPersonByUserName(String username) {
+
+		try {
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+			CriteriaQuery<Person> cq = cb.createQuery(Person.class);
+			Root<Person> e = cq.from(Person.class);
+
+			cq.where(cb.equal(e.get("username"), username));
+
+			TypedQuery<Person> qu = em.createQuery(cq);
+			return qu.getSingleResult();
+		} catch (Exception e) {
+			
+		}
+		return null;
 	}
 }
