@@ -4,6 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import sunofkyuss.zwitter.beans.utility.Crypto;
+import sunofkyuss.zwitter.beans.utility.MD5;
 import sunofkyuss.zwitter.dao.PersonDao;
 import sunofkyuss.zwitter.model.Person;
 
@@ -12,6 +13,10 @@ public class RegisterService {
 
 	@Inject
 	private PersonDao pd;
+	
+	@Inject
+	@MD5
+	private Crypto cr;
 
 	public boolean register(String username, String password) {
 
@@ -19,7 +24,7 @@ public class RegisterService {
 			return false;
 		}
 
-		password = Crypto.md5(password);
+		password = cr.encrypt(password);
 
 		Person person = new Person(username, password);
 		pd.create(person);
