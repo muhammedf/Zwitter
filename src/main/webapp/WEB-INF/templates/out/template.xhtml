@@ -8,14 +8,16 @@
 
 <ui:composition>
 	<h:head></h:head>
-	<h:body style="height:100vh;">
-		<b:row style="position: relative; top: 20%;">
-			<b:column span="4" offset="4">
-				<b:well>
-					<ui:insert name="middle" />
-				</b:well>
-			</b:column>
-		</b:row>
+	<h:body style="height:95vh;">
+		<b:container style="position:relative; top: 20%;">
+			<b:row>
+				<b:column span="4" offset="4">
+					<b:well>
+						<ui:insert name="middle" />
+					</b:well>
+				</b:column>
+			</b:row>
+		</b:container>
 	</h:body>
 </ui:composition>
 </html>
