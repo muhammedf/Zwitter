@@ -3,29 +3,31 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
-<ui:composition>
-<h:head></h:head>
+<ui:composition template="/WEB-INF/templates/out/template.xhtml">
+	<ui:define name="middle">
+		<h:head></h:head>
+		<h:body>
+			<h:form>
 
-<h:body>
-		<h:form>
+				<b:growl id="growl" show-detail="true" />
 
-			<b:growl id="growl" show-detail="true" />
-
-			<b:inputText placeholder="username" value="#{registerView.username}"
-				required="true" />
-			<b:inputSecret placeholder="password"
-				value="#{registerView.password}" required="true" />
-			<b:inputSecret placeholder="password correction"
-				value="#{registerView.passwordCorrection}" required="true" />
-			<b:commandButton look="success" ajax="true" value="Register"
-				action="#{registerView.register()}" update="@form" />
+				<b:inputText placeholder="username" value="#{registerView.username}"
+					required="true" />
+				<b:inputSecret placeholder="password"
+					value="#{registerView.password}" required="true" />
+				<b:inputSecret placeholder="password correction"
+					value="#{registerView.passwordCorrection}" required="true" />
+				<b:commandButton look="success" ajax="true" value="Register"
+					action="#{registerView.register()}" update="@form" />
 			
-		or <h:commandLink value="Login!" action="#{navigation.addRedirect(navigation.login()).asString()}" immediate="true" />
+		or <h:commandLink value="Login!"
+					action="#{navigation.addRedirect(navigation.login()).asString()}"
+					immediate="true" />
 
-		</h:form>
-	</h:body>
+			</h:form>
+		</h:body>
+	</ui:define>
 </ui:composition>
 </html>

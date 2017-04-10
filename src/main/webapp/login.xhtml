@@ -6,25 +6,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition>
-	<h:head></h:head>
-	<h:body>
+<ui:composition template="/WEB-INF/templates/out/template.xhtml">
+	<ui:define name="middle">
+		<h:head></h:head>
+		<h:body>
 
-		<h:form>
+			<h:form>
 
-			<b:growl id="growl" show-detail="true" />
+				<b:growl id="growl" show-detail="true" />
 
-			<b:inputText placeholder="username" value="#{loginView.username}"
-				required="true" />
-			<b:inputSecret placeholder="password"
-				value="#{loginView.password}" required="true" />
-			<b:commandButton look="success" ajax="true" value="Login"
-				action="#{loginView.login()}" update="growl" />
+				<b:inputText placeholder="username" value="#{loginView.username}"
+					required="true" />
+				<b:inputSecret placeholder="password" value="#{loginView.password}"
+					required="true" />
+				<b:commandButton look="success" ajax="true" value="Login"
+					action="#{loginView.login()}" update="growl" />
 			
-		or <h:commandLink value="Register!" action="#{navigation.addRedirect(navigation.register()).asString()}" immediate="true" />
+		or <h:commandLink value="Register!"
+					action="#{navigation.addRedirect(navigation.register()).asString()}"
+					immediate="true" />
 
-		</h:form>
+			</h:form>
 
-	</h:body>
+		</h:body>
+	</ui:define>
 </ui:composition>
 </html>
