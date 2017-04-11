@@ -9,15 +9,20 @@
 <ui:composition>
 	<h:head></h:head>
 	<h:body>
-
-		<b:navBar sticky="true" position="top">
-			<b:navbarLinks>
-				<b:navLink value="Link1"/>
-				<b:navLink value="Link2"/>
-				<b:navLink value="Link3"/>
-			</b:navbarLinks>
-		</b:navBar>
-
+		<h:form>
+		
+			<b:navBar sticky="true" position="top">
+				<b:navbarLinks>
+					<b:navLink value="Link1" />
+					<b:navLink value="Link2" />
+					<b:navLink value="Link3" />
+				</b:navbarLinks>
+				<b:navbarLinks pull="right">
+					<b:navCommandLink value="LogOut" action="#{loginView.logut()}"/>
+				</b:navbarLinks>
+			</b:navBar>
+			
+		</h:form>
 	</h:body>
 </ui:composition>
 </html>

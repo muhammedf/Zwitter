@@ -43,6 +43,11 @@ public class LoginView implements Serializable {
 		nav.redirectTo(nav.index());
 	}
 
+	public void logut() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		nav.redirectTo(nav.login());
+	}
+
 	public String getUsername() {
 		return username;
 	}
