@@ -28,9 +28,6 @@ public class ZwitCreateView implements Serializable {
 	@Inject
 	private MyZwitsView mzv;
 	
-	@Inject
-	private SessionMap sm;
-
 	private String message;
 	private Visibility visibility;
 
@@ -39,7 +36,7 @@ public class ZwitCreateView implements Serializable {
 	}
 
 	public void createZwit() {
-		Zwit zwit = zs.createZwit(sm.getUser().getId(), message, visibility);
+		Zwit zwit = zs.createZwit(SessionMap.getUser().getId(), message, visibility);
 
 		if (zwit == null) {
 			Messages.info("Error!", "Zwitting failed.");

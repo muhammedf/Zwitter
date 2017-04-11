@@ -4,11 +4,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/out/template.xhtml">
 	<ui:define name="middle">
-		<h:head></h:head>
+		<h:head>
+			<o:importFunctions type="sunofkyuss.zwitter.view.utility.Navigation"/>
+		</h:head>
 		<h:body>
 
 			<h:form>
@@ -23,7 +26,7 @@
 					action="#{loginView.login()}" update="growl" />
 			
 		or <h:commandLink value="Register!"
-					action="#{navigation.addRedirect(navigation.register()).asString()}"
+					action="#{Navigation:addRedirect(Navigation:register()).asString()}"
 					immediate="true" />
 
 			</h:form>

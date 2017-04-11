@@ -26,19 +26,16 @@ public class MyZwitsView implements Serializable {
 	@Inject
 	private FlowService fs;
 	
-	@Inject
-	private SessionMap sm;
-
 	private List<Zwit> zwits;
 
 	@PostConstruct
 	public void init() {
-		zwits = fs.getMineZwits(sm.getUser().getId(), new Date(), Constants.FETCHSIZE);
+		zwits = fs.getMineZwits(SessionMap.getUser().getId(), new Date(), Constants.FETCHSIZE);
 	}
 
 	public void more() {
 
-		List<Zwit> more = fs.getMineZwits(sm.getUser().getId(),
+		List<Zwit> more = fs.getMineZwits(SessionMap.getUser().getId(),
 				zwits.isEmpty() ? new Date() : zwits.get(zwits.size() - 1).getCreateDate(), Constants.FETCHSIZE);
 
 		zwits.addAll(more);

@@ -1,15 +1,12 @@
 package sunofkyuss.zwitter.view.utility;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
 import sunofkyuss.zwitter.Visibility;
 
-@Named
-@ApplicationScoped
-public class EnumLister {
+public final class EnumLister {
 
-	public Visibility[] visibilityValues(){
+	private EnumLister(){}
+	
+	public static Visibility[] visibilityValues(){
 		return Visibility.values();
 	}
 	
