@@ -79,10 +79,9 @@ public class ZwitDao {
 		cq.where(cb.and(
 					cb.lessThan(e.get("createDate"), date),
 					cb.or(
-						cb.and(
-								cb.notEqual(e.get("visibility"), Visibility.ME), cb.isMember(user, e.get("friends"))),
-								cb.equal(e.get("id"), user.getId())
-								)
+						cb.and(cb.notEqual(e.get("visibility"), Visibility.ME), cb.isMember(user, e.get("owner").get("friends"))),
+						cb.equal(e.get("owner").get("id"), user.getId())
+						)
 					)
 				);
 		
@@ -97,7 +96,7 @@ public class ZwitDao {
 		Root<Zwit> e = cq.from(Zwit.class);
 		
 		cq.orderBy(cb.desc(e.get("createDate")));
-		cq.where(cb.lessThan(e.get("createDate"), date), cb.equal(e.get("id"), userId));
+		cq.where(cb.lessThan(e.get("createDate"), date), cb.equal(e.get("owner").get("id"), userId));
 		
 		TypedQuery<Zwit> qu = em.createQuery(cq);
 		qu.setMaxResults(count);
