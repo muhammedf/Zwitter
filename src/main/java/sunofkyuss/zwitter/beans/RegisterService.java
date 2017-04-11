@@ -1,6 +1,6 @@
 package sunofkyuss.zwitter.beans;
 
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import sunofkyuss.zwitter.beans.utility.Crypto;
@@ -8,7 +8,7 @@ import sunofkyuss.zwitter.beans.utility.MD5;
 import sunofkyuss.zwitter.dao.PersonDao;
 import sunofkyuss.zwitter.model.Person;
 
-@RequestScoped
+@Stateless
 public class RegisterService {
 
 	@Inject

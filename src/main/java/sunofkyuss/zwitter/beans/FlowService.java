@@ -3,7 +3,7 @@ package sunofkyuss.zwitter.beans;
 import java.util.Date;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import sunofkyuss.zwitter.dao.PersonDao;
@@ -11,7 +11,7 @@ import sunofkyuss.zwitter.dao.ZwitDao;
 import sunofkyuss.zwitter.model.Person;
 import sunofkyuss.zwitter.model.Zwit;
 
-@RequestScoped
+@Stateless
 public class FlowService {
 
 	@Inject
