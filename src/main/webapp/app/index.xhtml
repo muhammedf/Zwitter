@@ -6,16 +6,47 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition>
-	<h:head></h:head>
-	<h:body>
+<ui:composition template="/WEB-INF/templates/in/template.xhtml">
+	<ui:define name="context">
+		<h:head></h:head>
+		<h:body>
+		
+			<h:form>
 
-		<b:well style="text-align: center;">
+				<b:inputTextarea placeholder="Let's Zwit Again!" required="true" maxlength="255"
+					value="#{zwitCreateView.message}" />
+				<b:selectOneMenu value="#{zwitCreateView.visibility}"
+					required="true">
+					<f:selectItems value="#{enumLister.visibilityValues()}" />
+				</b:selectOneMenu>
+				<b:commandButton value="Zwit it!" update="gg zs"
+					action="#{zwitCreateView.createZwit()}" look="success" />
 
-			<h:outputText value="WELCOME #{user.username}!" />
+			</h:form>
 
-		</b:well>
+			<br />
 
-	</h:body>
+			<h:form id="zs">
+				<div style="overflow-y: auto; max-height: 50vh">
+					<ui:repeat var="z" value="#{myZwitsView.zwits}">
+
+						<b:panel>
+							<h:outputText value="#{z.message}" />
+							<b:badge value="#{z.visibility}" style="float: right;" />
+						</b:panel>
+
+					</ui:repeat>
+				</div>
+
+				<br />
+
+				<div style="text-align: center;">
+					<b:commandButton value="MORE" action="#{myZwitsView.more()}"
+						update="@form" />
+				</div>
+			</h:form>
+
+		</h:body>
+	</ui:define>
 </ui:composition>
 </html>

@@ -43,6 +43,16 @@ public class Zwit implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
+	public Zwit() {
+
+	}
+
+	public Zwit(Person owner, String message, Visibility visibility) {
+		this.owner = owner;
+		this.message = message;
+		this.visibility = visibility;
+	}
+
 	public Long getId() {
 		return this.id;
 	}
